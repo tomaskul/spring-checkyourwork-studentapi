@@ -10,7 +10,7 @@ import java.util.UUID;
 @Service
 public class InMemoryStudentServiceImpl implements StudentService {
 
-    private Collection<UUID> students;
+    private final Collection<UUID> students;
 
     public InMemoryStudentServiceImpl(){
         students = new ArrayList<>();
