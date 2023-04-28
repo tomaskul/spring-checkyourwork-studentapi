@@ -1,5 +1,6 @@
 package io.github.tomaskul.springcheckyourworkstudentapi.controller;
 
+import io.github.tomaskul.springcheckyourworkstudentapi.exception.RelevantException;
 import io.github.tomaskul.springcheckyourworkstudentapi.model.Assignment;
 import io.github.tomaskul.springcheckyourworkstudentapi.model.AssignmentSummary;
 import io.github.tomaskul.springcheckyourworkstudentapi.service.AssignmentInformationService;
@@ -40,7 +41,10 @@ public class AssignmentController {
     }
 
     @PostMapping("/upload/{assignmentId}")
-    public ResponseEntity<UUID> upload(@RequestBody MultipartFile uploadFile, @PathVariable UUID assignmentId) {
+    public ResponseEntity<UUID> upload(@RequestBody MultipartFile uploadFile, @PathVariable UUID assignmentId){
+        if (uploadFile.isEmpty()){
+            throw new RelevantException();
+        }
         return new ResponseEntity<>(assignmentId, HttpStatus.OK);
     }
 }
