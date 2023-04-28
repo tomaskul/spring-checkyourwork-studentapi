@@ -5,6 +5,7 @@ import io.github.tomaskul.springcheckyourworkstudentapi.model.Assignment;
 import io.github.tomaskul.springcheckyourworkstudentapi.model.AssignmentSummary;
 import io.github.tomaskul.springcheckyourworkstudentapi.service.AssignmentInformationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,8 +32,8 @@ public class AssignmentController {
     }
 
     @GetMapping("/byId/{id}")
-    public ResponseEntity<Assignment> getById(@PathVariable String id){
-        Assignment entity = assignmentInformationService.getById(UUID.fromString(id));
+    public ResponseEntity<Assignment> getById(@PathVariable UUID id){
+        Assignment entity = assignmentInformationService.getById(id);
         if (entity == null) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
