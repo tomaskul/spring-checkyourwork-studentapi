@@ -43,7 +43,7 @@ public class AssignmentController {
 
     @PostMapping("/upload/{assignmentId}")
     public ResponseEntity<UUID> upload(@RequestBody MultipartFile uploadFile, @PathVariable UUID assignmentId){
-        if (uploadFile.isEmpty()){
+        if (uploadFile == null || uploadFile.isEmpty()){
             throw new RelevantException();
         }
         return new ResponseEntity<>(assignmentId, HttpStatus.OK);
