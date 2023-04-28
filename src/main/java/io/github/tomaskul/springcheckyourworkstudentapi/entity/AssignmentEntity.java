@@ -10,6 +10,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "CYW_ASSIGNMENTS")
 public class AssignmentEntity {
+    // Note: Annotations based on this response: https://stackoverflow.com/a/56362611.
     @Id
     @GeneratedValue(generator = "UUID", strategy = GenerationType.AUTO)
     @GenericGenerator(
