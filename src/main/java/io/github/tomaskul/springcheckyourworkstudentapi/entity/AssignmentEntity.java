@@ -1,6 +1,8 @@
 package io.github.tomaskul.springcheckyourworkstudentapi.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.util.Date;
 import java.util.UUID;
@@ -9,7 +11,13 @@ import java.util.UUID;
 @Table(name = "CYW_ASSIGNMENTS")
 public class AssignmentEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "UUID", strategy = GenerationType.AUTO)
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
+    @Column(name = "ID", updatable = false, nullable = false)
+    @ColumnDefault("random_uuid()")
     public UUID ID;
 
     @Column(nullable = false)
