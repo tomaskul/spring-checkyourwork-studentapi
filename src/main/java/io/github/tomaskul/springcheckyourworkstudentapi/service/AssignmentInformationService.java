@@ -3,7 +3,6 @@ package io.github.tomaskul.springcheckyourworkstudentapi.service;
 import io.github.tomaskul.springcheckyourworkstudentapi.model.Assignment;
 import io.github.tomaskul.springcheckyourworkstudentapi.model.AssignmentSummary;
 
-import java.util.Collection;
 import java.util.UUID;
 
 public interface AssignmentInformationService {
@@ -27,5 +26,5 @@ public interface AssignmentInformationService {
      * @param studentId Student identifier.
      * @return Assignment summaries for the student if found; otherwise empty collection.
      */
-    Collection<AssignmentSummary> getAssignedSummaries(UUID studentId);
+    Iterable<AssignmentSummary> getAssignedSummaries(UUID studentId);
 }
