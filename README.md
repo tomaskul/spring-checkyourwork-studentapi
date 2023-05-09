@@ -4,6 +4,19 @@
 A basic implementation of the Student API for [Check Your Work" architectural kata](https://nealford.com/katas/kata?id=CheckYourWork) using Java + Spring Boot.
 
 # Getting Started
+## Prerequisites
+List not maintained, based on set up during project set up.
+- JDK 20
+- Maven
+
+## Run the app
+At the root of the project, run:
+> mvn spring-boot:run
+
+## Links
+- Default host url:http://localhost:8080
+- H2 DB console: http://localhost:8080/h2-console/
+- Swagger UI: http://localhost:8080/api/swagger-ui/index.htm
 
 ### Reference Documentation
 For further reference, please consider the following sections:
