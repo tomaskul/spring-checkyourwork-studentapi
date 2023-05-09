@@ -4,9 +4,10 @@ import io.github.tomaskul.springcheckyourworkstudentapi.exception.RelevantExcept
 import io.github.tomaskul.springcheckyourworkstudentapi.model.Assignment;
 import io.github.tomaskul.springcheckyourworkstudentapi.model.AssignmentSummary;
 import io.github.tomaskul.springcheckyourworkstudentapi.service.AssignmentInformationService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -31,7 +32,7 @@ public class AssignmentController {
         return new ResponseEntity<>(summaries, HttpStatus.OK);
     }
 
-    @GetMapping("/byId/{id}")
+    @GetMapping(path = "/byId/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<Assignment> getById(@PathVariable UUID id){
         Assignment entity = assignmentInformationService.getById(id);
         if (entity == null) {
@@ -41,7 +42,8 @@ public class AssignmentController {
         return new ResponseEntity<>(entity, HttpStatus.OK);
     }
 
-    @PostMapping("/upload/{assignmentId}")
+    @PostMapping(path = "/upload/{assignmentId}", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
+    @Operation(summary = "Upload assignment data.", description = "Upload multi-part file containing assignment answer(s).")
     public ResponseEntity<UUID> upload(@RequestBody MultipartFile uploadFile, @PathVariable UUID assignmentId){
         if (uploadFile == null || uploadFile.isEmpty()){
             throw new RelevantException();
