@@ -15,7 +15,7 @@ At the root of the project, run:
 
 ## Links
 - Default host url:http://localhost:8080
-- H2 DB console: http://localhost:8080/h2-console/
+- H2 DB console: http://localhost:8080/h2-console/ (both credentials: sa)
 - Swagger UI: http://localhost:8080/api/swagger-ui/index.htm
 
 ### Reference Documentation
