@@ -20,7 +20,7 @@ public class InMemoryStudentServiceImpl implements StudentService {
         Iterable<StudentEntity> entities = studentRepository.findAll();
 
         Collection<UUID> result = new ArrayList<>();
-        entities.forEach(studentEntity -> { result.add(studentEntity.ID); } );
+        entities.forEach(studentEntity -> { result.add(studentEntity.getID()); } );
 
         return result;
     }

@@ -19,26 +19,12 @@ public class StudentEntity {
     )
     @Column(name = "ID", updatable = false, nullable = false)
     @ColumnDefault("random_uuid()")
-    public UUID ID;
+    private UUID ID;
 
     @Column(nullable = false)
-    public String fullName;
+    private String fullName;
 
-    public StudentEntity() {
-    }
     public UUID getID() {
         return ID;
-    }
-
-    public void setID(UUID ID) {
-        this.ID = ID;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
     }
 }
